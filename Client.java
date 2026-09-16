@@ -1,5 +1,6 @@
-//this code connects to the server and the user can send messages
-//code by geeks for geeks
+//this code lets the user connect to a server using a web address 
+//orginal code by geeks for geeks
+//edited by Leo Adira
 
 import java.io.*;
 import java.net.*;
