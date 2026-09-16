@@ -6,11 +6,19 @@ import java.net.*;
 import java.util.Scanner;
 
 public class Client {
-    private static final String SERVER_ADDRESS = "localhost";
-    private static final int SERVER_PORT = 12346;
+    //private static final String SERVER_ADDRESS = "67.42.72.118";
+    private static final int SERVER_PORT = 1234;
 
     public static void main(String[] args) {
         try {
+            Scanner scanner = new Scanner(System.in);
+            String userInput;
+            System.out.println("Enter address ");
+ 
+                userInput = scanner.nextLine();
+                System.out.println(userInput);
+            
+            InetAddress SERVER_ADDRESS = InetAddress.getByName(userInput);
             Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
             System.out.println("Connected to the chat server!");
 
@@ -31,8 +39,8 @@ public class Client {
             }).start();
 
             // Read messages from the console and send to the server
-            Scanner scanner = new Scanner(System.in);
-            String userInput;
+            
+            
             while (true) {
                 userInput = scanner.nextLine();
                 out.println(userInput);
