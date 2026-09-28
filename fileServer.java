@@ -8,20 +8,20 @@ import java.util.Scanner;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class fileServer {
+
     private static final int PORT = 12346;
     private static CopyOnWriteArrayList<ClientHandler> clients = new CopyOnWriteArrayList<>();
-    
 
     public static void main(String[] args) {
-       try {
+        try {
             ServerSocket serverSocket = new ServerSocket(PORT);
             System.out.println("Server is running and waiting for connections...");
 
             // Thread to handle server admin input
             new Thread(() -> {
-                Scanner scanner = new Scanner(System.in);
+                Scanner keyboardInput = new Scanner(System.in);
                 while (true) {
-                    String serverMessage = scanner.nextLine();
+                    String serverMessage = keyboardInput.nextLine();
                     broadcast("[Server]: " + serverMessage, null);
                 }
             }).start();
@@ -40,8 +40,8 @@ public class fileServer {
             e.printStackTrace();
         }
     }
-    
-// Broadcast a message to all clients
+
+    // Broadcast a message to all clients
     public static void broadcast(String message, ClientHandler sender) {
         for (ClientHandler client : clients) {
             if (client != sender) {
@@ -53,36 +53,36 @@ public class fileServer {
     // Internal class to handle client connections
     private static class ClientHandler implements Runnable {
         private Socket clientSocket;
-        private PrintWriter out;
-        private BufferedReader in;
+        private PrintWriter forCilent;
+        private BufferedReader fromCilent;
         private String username;
+        private File fileFromCilent;
 
         public ClientHandler(Socket socket) {
             this.clientSocket = socket;
 
             try {
-                out = new PrintWriter(clientSocket.getOutputStream(), true);
-                in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                //FileWriter filemaker= null;
-                //filemaker = new FileWriter("receivedFile.txt");
+                forCilent = new PrintWriter(clientSocket.getOutputStream(), true);
+                fromCilent = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-
         @Override
         public void run() {
             try {
                 // Get the username from the client
-                out.println("Enter your file name:");
-                username = in.readLine();
+                forCilent.println("Enter your username:");
+                username = fromCilent.readLine();
                 System.out.println("User " + username + " connected.");
-                out.println("Welcome to the chat, " + username + "!");
-                out.println("Type Your Message");
+                forCilent.println("Welcome to the server, " + username);
+                forCilent.println("Enter your file:");
+                //fileFromCilent = fromCilent.();
+
 
                 String inputLine;
-                while ((inputLine = in.readLine()) != null) {
+                while ((inputLine = fromCilent.readLine()) != null) {
                     System.out.println("[" + username + "]: " + inputLine);
                     broadcast("[" + username + "]: " + inputLine, this);
                 }
@@ -94,8 +94,8 @@ public class fileServer {
                 e.printStackTrace();
             } finally {
                 try {
-                    in.close();
-                    out.close();
+                    fromCilent.close();
+                    forCilent.close();
                     clientSocket.close();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -104,7 +104,7 @@ public class fileServer {
         }
 
         public void sendMessage(String message) {
-            out.println(message);
+            forCilent.println(message);
         }
     }
 }
