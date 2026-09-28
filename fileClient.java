@@ -12,8 +12,6 @@ public class fileClient {
     public static void main(String[] args) {
         try {
 
-            System.out.println("");
-
             Scanner keyboardInput  = new Scanner(System.in);
             String userInput;
             String filename;
