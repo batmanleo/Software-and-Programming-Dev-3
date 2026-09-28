@@ -2,6 +2,8 @@
 //and the user can send messages to all of the clients
 //code by geeks for geeks
 //edited by Leo
+import java.io.File;
+import java.io.FileWriter;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
@@ -77,7 +79,7 @@ public class fileServer {
                 username = fromCilent.readLine();
                 System.out.println("User " + username + " connected.");
                 forCilent.println("Welcome to the server, " + username);
-                forCilent.println("Enter your file:");
+                //forCilent.println("Enter your file:");
                 //fileFromCilent = fromCilent.();
 
 
