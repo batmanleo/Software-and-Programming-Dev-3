@@ -1,6 +1,7 @@
 //this code lets the user connect to a server using a web address 
 //orginal code by geeks for geeks
 //edited by Leo 
+import java.io.File;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
