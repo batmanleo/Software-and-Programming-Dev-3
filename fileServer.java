@@ -2,8 +2,6 @@
 //and the user can send messages to all of the clients
 //code by geeks for geeks
 //edited by Leo
-import java.io.File;
-import java.io.FileWriter;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
@@ -59,6 +57,7 @@ public class fileServer {
         private BufferedReader fromCilent;
         private String username;
         private File fileFromCilent;
+        private FileWriter filemaker= null;
 
         public ClientHandler(Socket socket) {
             this.clientSocket = socket;
@@ -79,19 +78,22 @@ public class fileServer {
                 username = fromCilent.readLine();
                 System.out.println("User " + username + " connected.");
                 forCilent.println("Welcome to the server, " + username);
-                //forCilent.println("Enter your file:");
-                //fileFromCilent = fromCilent.();
+                forCilent.println("Enter your file name:");
+                filemaker = new FileWriter("Serverdefultname");
+                //filemaker = new FileWriter(fromCilent.readLine());
 
 
                 String inputLine;
                 while ((inputLine = fromCilent.readLine()) != null) {
                     System.out.println("[" + username + "]: " + inputLine);
-                    broadcast("[" + username + "]: " + inputLine, this);
+                    filemaker.append(inputLine);
+                    //broadcast("[" + username + "]: " + inputLine, this);
                 }
 
                 // Remove the client handler from the list
                 clients.remove(this);
                 System.out.println("User " + username + " disconnected.");
+                filemaker.close();
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {

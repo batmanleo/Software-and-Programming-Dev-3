@@ -1,7 +1,6 @@
 //this code lets the user connect to a server using a web address 
 //orginal code by geeks for geeks
 //edited by Leo 
-import java.io.File;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
@@ -12,6 +11,8 @@ public class fileClient {
 
     public static void main(String[] args) {
         try {
+
+            System.out.println("");
 
             Scanner keyboardInput  = new Scanner(System.in);
             String userInput;
@@ -26,10 +27,10 @@ public class fileClient {
             System.out.println("Connected to the file server!");
 
 
-            System.out.println("Enter text file name");
+            //System.out.println("Enter text file name");
             
-            userInput = keyboardInput .nextLine();
-            File fileForServer = new File(userInput+".txt");
+            //userInput = keyboardInput .nextLine();
+            //File fileForServer = new File(userInput+".txt");
 
 
             // Setting up input and output streams
