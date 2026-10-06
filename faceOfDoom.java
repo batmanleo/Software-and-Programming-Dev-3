@@ -3,8 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.*;
+//this program was written by Leo Adira with help from Kim Gross
 
-
+//this class sets up the magenta face
 public class faceOfDoom extends JPanel {
 
 public void paintComponent(Graphics g){
@@ -23,7 +24,7 @@ g.fillOval(60, 170, 100, 20);
 }
 }
 
-
+//this class sets up the yellow face
 class faceOfEvil extends JPanel {
 
 public void paintComponent(Graphics g){
@@ -53,29 +54,33 @@ public static void main (String[] args) {
         JFrame window2 = new JFrame("Face Of Evil");
         JFrame window3 = new JFrame("Face Of Destruction");
         JFrame buttonWindow = new JFrame("Button");
+
+        //adds the window for the magenta face and sets it to invisible
         window.add(face);
         window.setSize(252,282);
         window.setVisible(false);
         window.setLocation(0, 250);
 
+        //adds the window for the yellow face and sets it to invisible
          window2.add(face2);
         window2.setSize(252,282);
         window2.setVisible(false);
         window2.setLocation(250, 250);
 
+        //adds the window for the blue face and sets it to invisible
          window3.add(face3);
         window3.setSize(252,282);
         window3.setVisible(false);
         window3.setLocation(250, 0);
 
-
+        //adds the button's window 
         buttonWindow.setLayout(new FlowLayout());
         buttonWindow.add(button);
         buttonWindow.add(buttonText);
         buttonWindow.setSize(252,282);
         buttonWindow.setVisible(true);
 
-
+        //defines what pressing the button will do
         ActionListener buttonPress = new ActionListener() {
             @Override 
             public void actionPerformed(ActionEvent e){
