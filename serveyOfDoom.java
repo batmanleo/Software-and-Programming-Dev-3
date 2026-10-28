@@ -99,7 +99,7 @@ ActionListener submitButtonPress = new ActionListener() {
         FileWriter filemaker = null;
                 @Override 
                 public void actionPerformed(ActionEvent e){
-
+                    FileWriter filemaker= null;
 
                     try {
                         /*this should make a new file called servey.txt
@@ -107,15 +107,31 @@ ActionListener submitButtonPress = new ActionListener() {
                         then close the FileWriter
                         it doesn't work though*/ 
                     filemaker = new FileWriter("servey.txt");
-
+                    
                     filemaker.append("name = " + textBoxName.getText()+"\n");
                     filemaker.append("address = " + textBoxAddress.getText()+"\n");
-                    filemaker.append("gender selected ="+gender.getSelection()+"\n");
+                    filemaker.append("Female? "+radioFemale.isSelected()+"\n");
+                    filemaker.append("Male? "+radioMale.isSelected()+"\n");
+                    filemaker.append("Other? "+radioOther.isSelected()+"\n");
+                    filemaker.append("Prefered not to say? "+radioNo.isSelected()+"\n");
                     filemaker.append("no Dairy = " + dairy.isSelected()+"\n");
                     filemaker.append("no Gluten = " + gluten.isSelected()+"\n");
                     filemaker.append("no Peanuts = " + peanuts.isSelected()+"\n");
                     filemaker.append("no Sugar = " + sugar.isSelected()+"\n");
-
+                    
+                        /*this is to test if the varibles work
+                        because the FileWriter isn't working*/
+                    System.out.println("name = " + textBoxName.getText()+"\n");
+                    System.out.println("address = " + textBoxAddress.getText()+"\n");
+                    System.out.println("Female? "+radioFemale.isSelected()+"\n");
+                    System.out.println("Male? "+radioMale.isSelected()+"\n");
+                    System.out.println("Other? "+radioOther.isSelected()+"\n");
+                    System.out.println("Prefered not to say? "+radioNo.isSelected()+"\n");
+                    System.out.println("no Dairy = " + dairy.isSelected()+"\n");
+                    System.out.println("no Gluten = " + gluten.isSelected()+"\n");
+                    System.out.println("no Peanuts = " + peanuts.isSelected()+"\n");
+                    System.out.println("no Sugar = " + sugar.isSelected()+"\n");
+                    
 
                     filemaker.close();
                     }catch (IOException ex) {   
