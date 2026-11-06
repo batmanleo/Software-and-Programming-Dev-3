@@ -1,0 +1,10 @@
+name = Bork
+address = Gorg land 
+Female = false
+Male = false
+Other = true
+Prefered not to say = false
+no Dairy = true
+no Gluten = true
+no Peanuts = true
+no Sugar = false
